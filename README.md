@@ -3,6 +3,8 @@ This project is a 3D Packing Optimization project in partnership with InstaDeep.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Unit_load_device_sizes.png" height="198*1.25" width="273*1.25" > [image credit Marc Lacoste](https://commons.wikimedia.org/wiki/User:Marc_Lacoste)
 
+Specific dimensions for several [Unit Load Devices](https://freight.qantas.com/freight-planning/equipment-uld.html).
+
 ### Why?
 Is it possible to pack shipping containers more efficiently? Save space, save time, save money - pack efficiently.
 Packing efficiently has the potential to reduce shipping costs that have increased due to the increase in fuel costs, shipping containers, trucks, and shipping bottlenecks.
