@@ -38,3 +38,17 @@ conda install -c anaconda pytest # - pytest
 
 pip install -U ray # - Ray and RLlib 
 pip install "ray[tune]" # - Tuning model
+
+# sudo apt-get install python3-tk # I needed turtle for the test_env - turtle didn't work
+
+# tryfing to follow https://towardsdatascience.com/beginners-guide-to-custom-environments-in-openai-s-gym-989371673952
+# to build test environment
+pip install openai # - OpenAI
+pip install stable-baselines[mpi]
+# Error Failed to build mpi4py - fixed with below
+# https://stackoverflow.com/questions/28440834/error-when-installing-mpi4py
+sudo apt-get install libopenmpi-dev
+pip install mpi4py
+# then retry pip install stable-baselines[mpi] - Worked!
+pip install tensorflow==1.15.0 # This didn't work - maybe this example isn't the way to go. Will retry later
+
