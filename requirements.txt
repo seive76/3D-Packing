@@ -1,8 +1,54 @@
-- Tensorflow==2.9
-- Keras
-- Jax (recommended!) or PyTorch for ML/DL modeling
-- Tensorboard
-- Gym
-- Plotly
-- pytest
-- RLib or acme for Reinforcement Learning
+
+# Install all of these packages IN your packing environment
+# my envirnment is named packing_env
+# conda activate packing_env
+
+# Tensorflow
+# references
+# https://stackoverflow.com/questions/45425896/install-tensorflow-with-specific-version-on-anaconda
+# https://www.tensorflow.org/api_docs/python/tf/all_symbols
+# https://www.tensorflow.org/install/pip
+# https://pypi.org/project/tensorflow-cpu/
+# I had to use a .whl file https://stackoverflow.com/questions/27885397/how-do-i-install-a-python-package-with-a-whl-file
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0 # - for GPU for tensorflow
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/ # configure system path
+# auto activate in environment
+mkdir -p $CONDA_PREFIX/etc/conda/activate.d
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+pip install tensorflow-cpu # install tensorflow-cpu 2.9.1
+pip install tensorflow # - Tensorflow
+# Verify the CPU setup:
+python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
+## If a tensor is returned, you've installed TensorFlow successfully.
+# Verify the GPU setup:
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+## If a list of GPU devices is returned, you've installed TensorFlow successfully.
+
+conda install -c conda-forge keras # - Keras
+
+conda install -c conda-forge jax # - Jax (recommended!) or PyTorch for ML/DL modeling
+
+conda install -c conda-forge tensorboard # - Tensorboard
+
+conda install -c conda-forge -c powerai gym # - Gym
+
+conda install -c plotly plotly#  - Plotly
+
+conda install -c anaconda pytest # - pytest
+
+pip install -U ray # - Ray and RLlib 
+pip install "ray[tune]" # - Tuning model
+
+# sudo apt-get install python3-tk # I needed turtle for the test_env - turtle didn't work
+
+# tryfing to follow https://towardsdatascience.com/beginners-guide-to-custom-environments-in-openai-s-gym-989371673952
+# to build test environment
+pip install openai # - OpenAI
+pip install stable-baselines[mpi]
+# Error Failed to build mpi4py - fixed with below
+# https://stackoverflow.com/questions/28440834/error-when-installing-mpi4py
+sudo apt-get install libopenmpi-dev
+pip install mpi4py
+# then retry pip install stable-baselines[mpi] - Worked!
+pip install tensorflow==1.15.0 # This didn't work - maybe this example isn't the way to go. Will retry later
+
