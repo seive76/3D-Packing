@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from loguru import logger
 
-import utils
+import utils_2D, utils_3D
 
 
 class Item:
@@ -161,13 +161,13 @@ class Superitem:
         """
         Return a sorted list of item ids contained in the superitem
         """
-        return sorted(utils.flatten([i.id for i in self.items]))
+        return sorted(utils_3D.flatten([i.id for i in self.items]))
 
     def get_items(self):
         """
         Return a list of single items in the superitem
         """
-        return list(utils.flatten([i.items for i in self.items]))
+        return list(utils_3D.flatten([i.items for i in self.items]))
 
     def get_num_items(self):
         """
@@ -192,7 +192,7 @@ class Superitem:
         all_dims = dict()
         for i in range(len(self.items)):
             dims = self.items[i].get_items_dims()
-            dups = utils.duplicate_keys([all_dims, dims])
+            dups = utils_3D.duplicate_keys([all_dims, dims])
             assert len(dups) == 0, f"Duplicated item in the same superitem, item ids: {dups}"
             all_dims = {**all_dims, **dims}
         return all_dims
@@ -250,7 +250,7 @@ class SingleItemSuperitem(Superitem):
         return self.volume
 
     def get_items_coords(self, width=0, depth=0, height=0):
-        return {self.items[0].id: utils.Coordinate(width, depth, height)}
+        return {self.items[0].id: utils_3D.Coordinate(width, depth, height)}
 
     def get_items_dims(self):
         return {self.items[0].id: self.items[0].dimensions}
@@ -295,7 +295,7 @@ class TwoHorizontalSuperitemWidth(HorizontalSuperitem):
         i1, i2 = tuple(self.items)
         d1 = i1.get_items_coords(width=width, depth=depth, height=height)
         d2 = i2.get_items_coords(width=width + i1.width, depth=depth, height=height)
-        dups = utils.duplicate_keys([d1, d2])
+        dups = utils_3D.duplicate_keys([d1, d2])
         assert len(dups) == 0, f"Duplicated item in the same superitem, item ids: {dups}"
         return {**d1, **d2}
 
@@ -321,7 +321,7 @@ class TwoHorizontalSuperitemDepth(HorizontalSuperitem):
         i1, i2 = tuple(self.items)
         d1 = i1.get_items_coords(width=width, depth=depth, height=height)
         d2 = i2.get_items_coords(width=width, depth=i1.depth + depth, height=height)
-        dups = utils.duplicate_keys([d1, d2])
+        dups = utils_3D.duplicate_keys([d1, d2])
         assert len(dups) == 0, f"Duplicated item in the same superitem, items ids: {dups}"
         return {**d1, **d2}
 
@@ -349,7 +349,7 @@ class FourHorizontalSuperitem(HorizontalSuperitem):
         d2 = i2.get_items_coords(width=i1.width + width, depth=depth, height=height)
         d3 = i3.get_items_coords(width=width, depth=i1.depth + depth, height=height)
         d4 = i4.get_items_coords(width=i1.width + width, depth=i1.depth + depth, height=height)
-        dups = utils.duplicate_keys([d1, d2, d3, d4])
+        dups = utils_3D.duplicate_keys([d1, d2, d3, d4])
         assert len(dups) == 0, f"Duplicated item in the same superitem, item ids: {dups}"
         return {**d1, **d2, **d3, **d4}
 
@@ -394,7 +394,7 @@ class VerticalSuperitem(Superitem):
                 depth=depth_offset,
                 height=height,
             )
-            dups = utils.duplicate_keys([all_coords, coords])
+            dups = utils_3D.duplicate_keys([all_coords, coords])
             assert len(dups) == 0, f"Duplicated item in the same superitem, item ids: {dups}"
             all_coords = {**all_coords, **coords}
             height += self.items[i].height
@@ -543,7 +543,7 @@ class SuperitemPool:
         """
         Return the flattened list of ids of each item inside the pool
         """
-        return sorted(set(utils.flatten(self.get_item_ids())))
+        return sorted(set(utils_3D.flatten(self.get_item_ids())))
 
     def get_num_unique_items(self):
         """
@@ -732,7 +732,7 @@ class SuperitemPool:
             # Add the "width * depth" column and sort superitems
             # in ascending order by that dimension
             wd = [s.width * s.depth for s in superitems]
-            superitems = [superitems[i] for i in utils.argsort(wd)]
+            superitems = [superitems[i] for i in utils_3D.argsort(wd)]
 
             # Extract candidate groups made up of >= 2 items or superitems
             slices = []

@@ -3,7 +3,7 @@ from loguru import logger
 from rectpack import newPacker, PackingMode, PackingBin, SORT_AREA
 from rectpack.maxrects import MaxRectsBaf, MaxRectsBl, MaxRectsBlsf, MaxRectsBssf
 
-import utils, layers, superitems
+import utils_3D, layers, superitems
 
 
 MAXRECTS_PACKING_STRATEGIES = [MaxRectsBaf, MaxRectsBssf, MaxRectsBlsf, MaxRectsBl]
@@ -53,7 +53,7 @@ def maxrects_multiple_layers(superitems_pool, pallet_dims, add_single=True):
                 spool, scoords = [], []
                 for superitem in layer:
                     spool += [superitems_pool[superitem.rid]]
-                    scoords += [utils.Coordinate(superitem.x, superitem.y)]
+                    scoords += [utils_3D.Coordinate(superitem.x, superitem.y)]
 
                 spool = superitems.SuperitemPool(superitems=spool)
                 layer_pool.add(layers.Layer(spool, scoords, pallet_dims))
@@ -67,7 +67,7 @@ def maxrects_multiple_layers(superitems_pool, pallet_dims, add_single=True):
         uncovered = [len(pool.not_covered_superitems()) for pool in generated_pools]
         n_layers = [len(pool) for pool in generated_pools]
         densities = [pool[0].get_density(two_dims=False) for pool in generated_pools]
-        pool_indexes = utils.argsort(list(zip(uncovered, n_layers, densities)), reverse=True)
+        pool_indexes = utils_3D.argsort(list(zip(uncovered, n_layers, densities)), reverse=True)
         layer_pool = generated_pools[pool_indexes[0]]
         uncovered = uncovered[pool_indexes[0]]
 
@@ -119,7 +119,7 @@ def maxrects_single_layer_offline(superitems_pool, pallet_dims, superitems_in_la
         if len(packer) == 1 and len(packer[0]) == len(superitems_in_layer):
             spool = superitems.SuperitemPool(superitems=[superitems_pool[s.rid] for s in packer[0]])
             layer = layers.Layer(
-                spool, [utils.Coordinate(s.x, s.y) for s in packer[0]], pallet_dims
+                spool, [utils_3D.Coordinate(s.x, s.y) for s in packer[0]], pallet_dims
             )
             logger.debug(
                 f"MR-SL-Offline generated a new layer with {len(layer)} superitems "
@@ -143,7 +143,7 @@ def maxrects_single_layer_online(superitems_pool, pallet_dims, superitems_duals=
         superitems_duals = np.array(hs)
 
     # Sort rectangles by duals
-    indexes = utils.argsort(list(zip(superitems_duals, hs)), reverse=True)
+    indexes = utils_3D.argsort(list(zip(superitems_duals, hs)), reverse=True)
     logger.debug(
         f"MR-SL-Online {sum(superitems_duals[i] > 0 for i in indexes)} non-zero duals to place"
     )
@@ -178,13 +178,13 @@ def maxrects_single_layer_online(superitems_pool, pallet_dims, superitems_duals=
         spool, coords = [], []
         for s in packer[0]:
             spool += [superitems_pool[s.rid]]
-            coords += [utils.Coordinate(s.x, s.y)]
+            coords += [utils_3D.Coordinate(s.x, s.y)]
         layer = layers.Layer(superitems.SuperitemPool(spool), coords, pallet_dims)
         generated_layers += [layer]
 
     # Find the best layer by taking into account the number of
     # placed superitems with non-zero duals and density
-    layer_indexes = utils.argsort(
+    layer_indexes = utils_3D.argsort(
         [
             (duals, layer.get_density(two_dims=False))
             for duals, layer in zip(num_duals, generated_layers)

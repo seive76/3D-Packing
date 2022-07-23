@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from loguru import logger
 
-import utils, superitems, maxrects
+import utils_3D, superitems, maxrects
 
 
 class Layer:
@@ -71,7 +71,7 @@ class Layer:
         items_coords = dict()
         for s, c in zip(self.superitems_pool, self.superitems_coords):
             coords = s.get_items_coords(width=c.x, depth=c.y, height=z)
-            duplicates = utils.duplicate_keys([items_coords, coords])
+            duplicates = utils_3D.duplicate_keys([items_coords, coords])
             if len(duplicates) > 0:
                 logger.error(f"Item repetition in the same layer, Items id:{duplicates}")
             items_coords = {**items_coords, **coords}
@@ -85,7 +85,7 @@ class Layer:
         items_dims = dict()
         for s in self.superitems_pool:
             dims = s.get_items_dims()
-            duplicates = utils.duplicate_keys([items_dims, dims])
+            duplicates = utils_3D.duplicate_keys([items_dims, dims])
             if len(duplicates) > 0:
                 logger.error(f"Item repetition in the same layer, Items id:{duplicates}")
             items_dims = {**items_dims, **dims}
@@ -139,15 +139,15 @@ class Layer:
         having a maximum height given by the height of the layer
         """
         if ax is None:
-            ax = utils.get_pallet_plot(
-                utils.Dimension(self.pallet_dims.width, self.pallet_dims.depth, self.height)
+            ax = utils_3D.get_pallet_plot(
+                utils_3D.Dimension(self.pallet_dims.width, self.pallet_dims.depth, self.height)
             )
         items_coords = self.get_items_coords(z=height)
         items_dims = self.get_items_dims()
         for item_id in items_coords.keys():
             coords = items_coords[item_id]
             dims = items_dims[item_id]
-            ax = utils.plot_product(ax, item_id, coords, dims)
+            ax = utils_3D.plot_product(ax, item_id, coords, dims)
         return ax
 
     def to_dataframe(self, z=0):
@@ -198,7 +198,7 @@ class Layer:
     def __hash__(self):
         s_hashes = [hash(s) for s in self.superitems_pool]
         c_hashes = [hash(c) for c in self.superitems_coords]
-        strs = [f"{s_hashes[i]}/{c_hashes[i]}" for i in utils.argsort(s_hashes)]
+        strs = [f"{s_hashes[i]}/{c_hashes[i]}" for i in utils_3D.argsort(s_hashes)]
         return hash("-".join(strs))
 
 
@@ -232,7 +232,7 @@ class LayerPool:
             self.add(
                 Layer(
                     superitems.SuperitemPool([superitem]),
-                    [utils.Coordinate(x=0, y=0)],
+                    [utils_3D.Coordinate(x=0, y=0)],
                     self.pallet_dims,
                 )
             )
@@ -338,7 +338,7 @@ class LayerPool:
         Sort layers in the pool by decreasing density
         """
         densities = self.get_densities(two_dims=two_dims)
-        sorted_indices = utils.argsort(densities, reverse=True)
+        sorted_indices = utils_3D.argsort(densities, reverse=True)
         self.layers = [self.layers[i] for i in sorted_indices]
 
     def discard_by_densities(self, min_density=0.5, two_dims=False):
@@ -431,7 +431,7 @@ class LayerPool:
                     edited_layers.add(l)
                     duplicated_volumes = [s.volume for s in duplicated_superitems]
                     layer = layer.difference(
-                        [duplicated_indices[i] for i in utils.argsort(duplicated_volumes)[:-1]]
+                        [duplicated_indices[i] for i in utils_3D.argsort(duplicated_volumes)[:-1]]
                     )
 
             if l in edited_layers:

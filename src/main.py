@@ -1,6 +1,6 @@
 from loguru import logger
 
-import layers, superitems, config, maxrects, column_generation, baseline, bins
+import layers, superitems, config_3D, maxrects, column_generation, baseline, bins
 
 
 def get_height_groups(superitems_pool, pallet_dims, height_tol=0, density_tol=0.5):
