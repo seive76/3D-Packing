@@ -1,8 +1,8 @@
 import utils_2D
 
 # Container 1A (cm and litter)
-CONTAINER_WIDTH = 233
-CONTAINER_HEIGHT = 220
+CONTAINER_WIDTH = 600
+CONTAINER_HEIGHT = 600
 CONTAINER_LOAD_2D = (CONTAINER_WIDTH * CONTAINER_HEIGHT) / 100 # litter
 
 # Pallet EUR 1 (cm and kg)
