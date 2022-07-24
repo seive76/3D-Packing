@@ -12,19 +12,19 @@ PALLET_DEPTH = 80
 PALLET_HEIGHT = CONTAINER_HEIGHT - 145  # 145 is the height of the pallet itself
 PALLET_LOAD = (PALLET_WIDTH * PALLET_DEPTH * PALLET_HEIGHT) / 100
 
-PALLET_DIMS3D = utils_3D.Dimension(PALLET_WIDTH, 
-                                   PALLET_DEPTH, 
-                                   PALLET_HEIGHT, 
-                                   PALLET_LOAD)
+PALLET_DIMS3D = utils_3D.Dimension(CONTAINER_WIDTH, 
+                                   CONTAINER_HEIGHT, 
+                                   CONTAINER_DEPTH, 
+                                   CONTAINER_LOAD_3D)
 
 # Product dimension ranges (mm and kg)
 NUM_PRODUCTS = int(1e6)
 MIN_PRODUCT_WIDTH = 50
-MAX_PRODUCT_WIDTH = PALLET_WIDTH
+MAX_PRODUCT_WIDTH = CONTAINER_WIDTH
 MIN_PRODUCT_DEPTH = 50
-MAX_PRODUCT_DEPTH = PALLET_DEPTH
+MAX_PRODUCT_DEPTH = CONTAINER_DEPTH
 MIN_PRODUCT_HEIGHT = 50
-MAX_PRODUCT_HEIGHT = PALLET_HEIGHT
+MAX_PRODUCT_HEIGHT = CONTAINER_HEIGHT
 #MIN_PRODUCT_WEIGHT = 2
 #MAX_PRODUCT_WEIGHT = PALLET_LOAD
 
