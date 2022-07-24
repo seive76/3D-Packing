@@ -1,0 +1,25 @@
+import utils_2D
+
+# Container 1A (cm and litter)
+CONTAINER_WIDTH = 600
+CONTAINER_HEIGHT = 600
+CONTAINER_LOAD_2D = (CONTAINER_WIDTH * CONTAINER_HEIGHT) / 100 # litter
+
+# Pallet EUR 1 (cm and kg)
+PALLET_WIDTH = 120
+PALLET_HEIGHT = 80
+PALLET_LOAD_2D = (PALLET_WIDTH * PALLET_HEIGHT) / 100
+
+PALLET_DIMS = utils_2D.Dimension(PALLET_WIDTH, 
+                              PALLET_HEIGHT, 
+                              PALLET_LOAD_2D)
+
+# Product dimension ranges (cm and litter)
+NUM_PRODUCTS = int(1e6)
+MIN_PRODUCT_WIDTH = 20
+MAX_PRODUCT_WIDTH = PALLET_WIDTH
+MIN_PRODUCT_HEIGHT = 20
+MAX_PRODUCT_HEIGHT = PALLET_HEIGHT
+
+# Numpy
+RANDOM_SEED = 42
