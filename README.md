@@ -1,7 +1,9 @@
 # 3D-Packing Project
 This project is a 3D Packing Optimization project in partnership with InstaDeep. We are packing a Unit Load Device [Unit Load Device Description](https://en.wikipedia.org/wiki/Unit_load_device)
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Unit_load_device_sizes.png" height="198*1.25" width="273*1.25" >
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Unit_load_device_sizes.png" height="198*1.25" width="273*1.25" > [image credit Marc Lacoste](https://commons.wikimedia.org/wiki/User:Marc_Lacoste)
+
+Specific dimensions for several [Unit Load Devices](https://freight.qantas.com/freight-planning/equipment-uld.html).
 
 ### Why?
 Is it possible to pack shipping containers more efficiently? Save space, save time, save money - pack efficiently.
