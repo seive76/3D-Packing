@@ -1,0 +1,43 @@
+Collecting baselines
+  Using cached baselines-0.1.5.tar.gz (123 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: gym[atari,classic_control,mujoco,robotics] in /Users/nguyens/miniforge3/envs/nguyens-rl/lib/python3.8/site-packages (from baselines) (0.24.1)
+Requirement already satisfied: scipy in /Users/nguyens/miniforge3/envs/nguyens-rl/lib/python3.8/site-packages (from baselines) (1.8.1)
+Requirement already satisfied: tqdm in /Users/nguyens/miniforge3/envs/nguyens-rl/lib/python3.8/site-packages (from baselines) (4.64.0)
+Requirement already satisfied: joblib in /Users/nguyens/miniforge3/envs/nguyens-rl/lib/python3.8/site-packages (from baselines) (1.1.0)
+Collecting zmq
+  Using cached zmq-0.0.0.zip (2.2 kB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: dill in /Users/nguyens/miniforge3/envs/nguyens-rl/lib/python3.8/site-packages (from baselines) (0.3.5.1)
+Collecting progressbar2
+  Using cached progressbar2-4.0.0-py2.py3-none-any.whl (26 kB)
+Collecting mpi4py
+  Using cached mpi4py-3.1.3.tar.gz (2.5 MB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: cloudpickle in /Users/nguyens/miniforge3/envs/nguyens-rl/lib/python3.8/site-packages (from baselines) (2.1.0)
+Collecting baselines
+  Using cached baselines-0.1.4-py3-none-any.whl (44 kB)
+  Using cached baselines-0.1.3-py3-none-any.whl (44 kB)
+  Using cached baselines-0.1.2-py3-none-any.whl (44 kB)
+  Using cached baselines-0.1.1-py3-none-any.whl (44 kB)
+  Using cached baselines-0.1.0-py3-none-any.whl (46 kB)
+
+The conflict is caused by:
+    baselines 0.1.5 depends on tensorflow>=1.4.0
+    baselines 0.1.4 depends on tensorflow>=1.0.0
+    baselines 0.1.3 depends on tensorflow>=1.0.0
+    baselines 0.1.2 depends on tensorflow>=1.0.0
+    baselines 0.1.1 depends on tensorflow>=1.0.0
+    baselines 0.1.0 depends on tensorflow>=1.0.0
+
+To fix this you could try to:
+1. loosen the range of package versions you've specified
+2. remove package versions to allow pip attempt to solve the dependency conflict
+
