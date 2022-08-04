@@ -1,10 +1,10 @@
 # container_size: A vector of length 3 describing the size of the container in the x, y, z dimension.
 # item_size_set:  A list records the size of each item. The size of each item is also described by a vector of length 3.
 
-container_size = [10,10,10]
+container_size = [9,9,9]
 
-lower = 2
-higher = 2 ## Change to have uniform boxes was 1-5, now 2-2
+lower = 3
+higher = 3 ## Change to have uniform boxes was 1-5, now 2-2
 resolution = 1
 item_size_set = []
 for i in range(lower, higher + 1):
