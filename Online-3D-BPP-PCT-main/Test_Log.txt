@@ -1,0 +1,6 @@
+## Testing log
+
+Run name:
+Cont_2x2x2Box_Set1
+Run command:
+python main.py --no-cuda --continuous --setting 1 --model-save-interval 500
