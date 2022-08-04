@@ -1,0 +1,20 @@
+name: gym-rl
+channels:
+  - intel
+  - defaults
+dependencies:
+  - bzip2=1.0.8=hb9a14ef_9
+  - certifi=2018.1.18=py36_2
+  - intelpython=2022.1.0=0
+  - libgcc-ng=9.3.0=hdf63c60_101
+  - openssl=1.0.2s=0
+  - pip=19.1.1=py36_0
+  - python=3.6.9=5
+  - setuptools=41.0.1=py36_0
+  - sqlite=3.28.0=0
+  - tcl=8.6.4=24
+  - tk=8.6.4=29
+  - wheel=0.37.1=pyhd3eb1b0_0
+  - xz=5.2.5=h74280d8_2
+  - zlib=1.2.11.1=h1e99aa7_5
+prefix: /home/cim/anaconda3/envs/gym-rl
