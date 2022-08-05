@@ -8,8 +8,8 @@ higher = 3 ## Change to have uniform boxes was 1-5, now 2-2
 resolution = 1
 item_size_set = []
 for i in range(lower, higher + 1):
-    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
-        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+    for j in range(lower, higher + 1):
+        for k in range(lower, higher + 1):
                 item_size_set.append((i * resolution, j * resolution , k *  resolution))
 
 # If you want to sample item sizes from a uniform distribution in continuous domain,
