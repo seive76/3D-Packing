@@ -1,7 +1,11 @@
 # 3D-Packing Project
 This project is a 3D Packing Optimization project in partnership with InstaDeep. The ultimate goal is to pack a Unit Load Device [Unit Load Device Description](https://en.wikipedia.org/wiki/Unit_load_device)
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Unit_load_device_sizes.png" height="198*1.25" width="273*1.25" > [image credit Marc Lacoste](https://commons.wikimedia.org/wiki/User:Marc_Lacoste)
+
+<p style="text-align: center;"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Unit_load_device_sizes.png" height="99" width="136.5" > 
+
+[image credit Marc Lacoste](https://commons.wikimedia.org/wiki/User:Marc_Lacoste)</p>
+
 
 Specific dimensions for several [Unit Load Devices](https://freight.qantas.com/freight-planning/equipment-uld.html).
 
@@ -35,7 +39,7 @@ This is the repository of 3D Packing capstone project designed to productionize 
   * [2D-packing.ipynb](https://github.com/seive76/3D-Packing/blob/main/2D-packing.ipynb) & 
   * [BBP_w_alexfrom0815.ipynb](https://github.com/seive76/3D-Packing/blob/main/BBP_w_alexfrom0815.ipynb) & 
   * [Env2D.ipynb](https://github.com/seive76/3D-Packing/blob/main/nb/Env2D.ipynb)
-* We're working with code from 
+* We're working with code from [Hang Zhao](https://github.com/alexfrom0815)
 
 ### 
 
