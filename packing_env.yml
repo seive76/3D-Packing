@@ -2,6 +2,16 @@
 # $ conda create --name <env> --file <this file>
 # platform: linux-64
 @EXPLICIT
+# torch for cpu only
+# https://conda.anaconda.org/pytorch/noarch/pytorch-mutex-1.0-cpu.tar.bz2
+# https://conda.anaconda.org/pytorch/noarch/cpuonly-2.0-0.tar.bz2
+# https://conda.anaconda.org/pytorch/linux-64/pytorch-1.10.2-py3.7_cpu_0.tar.bz2
+# https://conda.anaconda.org/pytorch/linux-64/ffmpeg-4.3-hf484d3e_0.tar.bz2
+# https://conda.anaconda.org/pytorch/linux-64/torchaudio-0.10.2-py37_cpu.tar.bz2
+# https://conda.anaconda.org/pytorch/linux-64/torchvision-0.11.3-py37_cpu.tar.bz2
+
+# torch for gpu
+
 https://conda.anaconda.org/intel/linux-64/tcl-8.6.10-2.tar.bz2
 https://repo.anaconda.com/pkgs/main/noarch/tzdata-2022a-hda174b7_0.conda
 https://conda.anaconda.org/conda-forge/linux-64/_libgcc_mutex-0.1-conda_forge.tar.bz2
@@ -18,9 +28,7 @@ https://repo.anaconda.com/pkgs/main/linux-64/libgcc-devel_linux-64-11.2.0-h12345
 https://conda.anaconda.org/conda-forge/linux-64/libgfortran4-7.5.0-h14aa051_20.tar.bz2
 https://repo.anaconda.com/pkgs/main/linux-64/libstdcxx-devel_linux-64-11.2.0-h1234567_1.conda
 https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-ng-12.1.0-ha89aaad_16.tar.bz2
-https://conda.anaconda.org/pytorch/noarch/pytorch-mutex-1.0-cpu.tar.bz2
 https://conda.anaconda.org/intel/linux-64/tbb-2021.6.0-intel_835.tar.bz2
-https://conda.anaconda.org/pytorch/noarch/cpuonly-2.0-0.tar.bz2
 https://conda.anaconda.org/intel/linux-64/intel-fortran-rt-2021.4.0-intel_3561.tar.bz2
 https://conda.anaconda.org/intel/linux-64/intel-opencl-rt-2021.4.0-intel_3561.tar.bz2
 https://repo.anaconda.com/pkgs/main/noarch/kernel-headers_linux-64-3.10.0-h57e8cba_10.tar.bz2
@@ -211,7 +219,6 @@ https://conda.anaconda.org/plotly/noarch/plotly-5.8.2-py_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/noarch/prompt-toolkit-3.0.20-pyhd3eb1b0_0.conda
 https://conda.anaconda.org/intel/noarch/pyasn1-modules-0.2.8-py_0.tar.bz2
 https://conda.anaconda.org/intel/linux-64/python-dateutil-2.8.2-py37_1.tar.bz2
-https://conda.anaconda.org/pytorch/linux-64/pytorch-1.10.2-py3.7_cpu_0.tar.bz2
 https://conda.anaconda.org/conda-forge/noarch/pyu2f-0.1.5-pyhd8ed1ab_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/linux-64/qt-5.9.7-h5867ecd_1.conda
 https://conda.anaconda.org/intel/noarch/rsa-4.7.2-pyhd3eb1b0_1.tar.bz2
@@ -231,7 +238,6 @@ https://conda.anaconda.org/intel/linux-64/brotlipy-0.7.0-py37h27cfd23_1003.tar.b
 https://repo.anaconda.com/pkgs/main/noarch/commonmark-0.9.1-pyhd3eb1b0_0.conda
 https://conda.anaconda.org/intel/linux-64/cryptography-36.0.0-py37h9ce1e76_0.tar.bz2
 https://conda.anaconda.org/intel/linux-64/cython-0.29.25-py37hab8dbbf_0.tar.bz2
-https://conda.anaconda.org/pytorch/linux-64/ffmpeg-4.3-hf484d3e_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/noarch/gitpython-3.1.18-pyhd3eb1b0_1.conda
 https://conda.anaconda.org/conda-forge/noarch/importlib_metadata-4.11.4-hd8ed1ab_0.tar.bz2
 https://repo.anaconda.com/pkgs/main/linux-64/ipython-7.31.1-py37h06a4308_0.conda
@@ -279,8 +285,6 @@ https://conda.anaconda.org/intel/linux-64/numpy-1.20.3-py37h2742bb4_2.tar.bz2
 https://conda.anaconda.org/intel/linux-64/numexpr-2.7.3-py37hfdc8c6c_1.tar.bz2
 https://conda.anaconda.org/intel/noarch/opt_einsum-3.3.0-pyhd3eb1b0_1.tar.bz2
 https://conda.anaconda.org/intel/linux-64/scipy-1.6.2-py37h3fee769_0.tar.bz2
-https://conda.anaconda.org/pytorch/linux-64/torchaudio-0.10.2-py37_cpu.tar.bz2
-https://conda.anaconda.org/pytorch/linux-64/torchvision-0.11.3-py37_cpu.tar.bz2
 https://conda.anaconda.org/conda-forge/linux-64/jaxlib-0.3.10-cpu_py37ha701b26_0.tar.bz2
 https://conda.anaconda.org/intel/linux-64/pandas-1.3.5-py37h1e911ba_1.tar.bz2
 https://repo.anaconda.com/pkgs/main/noarch/altair-4.1.0-py_1.conda

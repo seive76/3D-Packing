@@ -1,54 +1,105 @@
-
-# Install all of these packages IN your packing environment
-# my envirnment is named packing_env
-# conda activate packing_env
-
-# Tensorflow
-# references
-# https://stackoverflow.com/questions/45425896/install-tensorflow-with-specific-version-on-anaconda
-# https://www.tensorflow.org/api_docs/python/tf/all_symbols
-# https://www.tensorflow.org/install/pip
-# https://pypi.org/project/tensorflow-cpu/
-# I had to use a .whl file https://stackoverflow.com/questions/27885397/how-do-i-install-a-python-package-with-a-whl-file
-conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0 # - for GPU for tensorflow
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/ # configure system path
-# auto activate in environment
-mkdir -p $CONDA_PREFIX/etc/conda/activate.d
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
-pip install tensorflow-cpu # install tensorflow-cpu 2.9.1
-pip install tensorflow # - Tensorflow
-# Verify the CPU setup:
-python3 -c "import tensorflow as tf; print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
-## If a tensor is returned, you've installed TensorFlow successfully.
-# Verify the GPU setup:
-python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
-## If a list of GPU devices is returned, you've installed TensorFlow successfully.
-
-conda install -c conda-forge keras # - Keras
-
-conda install -c conda-forge jax # - Jax (recommended!) or PyTorch for ML/DL modeling
-
-conda install -c conda-forge tensorboard # - Tensorboard
-
-conda install -c conda-forge -c powerai gym # - Gym
-
-conda install -c plotly plotly#  - Plotly
-
-conda install -c anaconda pytest # - pytest
-
-pip install -U ray # - Ray and RLlib 
-pip install "ray[tune]" # - Tuning model
-
-# sudo apt-get install python3-tk # I needed turtle for the test_env - turtle didn't work
-
-# tryfing to follow https://towardsdatascience.com/beginners-guide-to-custom-environments-in-openai-s-gym-989371673952
-# to build test environment
-pip install openai # - OpenAI
-pip install stable-baselines[mpi]
-# Error Failed to build mpi4py - fixed with below
-# https://stackoverflow.com/questions/28440834/error-when-installing-mpi4py
-sudo apt-get install libopenmpi-dev
-pip install mpi4py
-# then retry pip install stable-baselines[mpi] - Worked!
-pip install tensorflow==1.15.0 # This didn't work - maybe this example isn't the way to go. Will retry later
-
+absl-py==1.2.0
+ale-py==0.7.5
+astunparse==1.6.3
+attrs==22.1.0
+baselines==0.1.6
+box2d-py==2.3.5
+brotlipy==0.7.0
+cachetools==5.2.0
+certifi==2021.10.8
+cffi==1.15.0
+charset-normalizer==2.0.4
+click==8.1.3
+cloudpickle==1.2.2
+colorama==0.4.4
+conda==4.12.0
+conda-content-trust==0+unknown
+conda-package-handling==1.8.1
+cryptography==36.0.0
+cycler==0.11.0
+Cython==0.29.32
+dill==0.3.5.1
+fasteners==0.17.3
+flatbuffers==1.12
+fonttools==4.34.4
+future==0.18.2
+gast==0.4.0
+glfw==2.5.4
+google-auth==2.9.1
+google-auth-oauthlib==0.4.6
+google-pasta==0.2.0
+grpcio==1.47.0
+gym==0.15.7
+gym-notices==0.0.7
+h5py==3.7.0
+idna==3.3
+imageio==2.21.0
+importlib-metadata==4.12.0
+importlib-resources==5.9.0
+iniconfig==1.1.1
+joblib==1.1.0
+keras==2.9.0
+Keras-Preprocessing==1.1.2
+kiwisolver==1.4.4
+libclang==14.0.6
+lockfile==0.12.2
+lz4==4.0.2
+Markdown==3.4.1
+MarkupSafe==2.1.1
+matplotlib==3.5.2
+mpi4py==3.1.3
+mujoco==2.2.0
+mujoco-py==2.1.2.14
+numpy==1.23.1
+oauthlib==3.2.0
+opencv-python==4.6.0.66
+opt-einsum==3.3.0
+packaging==21.3
+Pillow==9.2.0
+pip==21.2.4
+pluggy==1.0.0
+progressbar2==4.0.0
+protobuf==3.19.4
+py==1.11.0
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pycosat==0.6.3
+pycparser==2.21
+pygame==2.1.0
+pyglet==1.5.0
+PyOpenGL==3.1.6
+pyOpenSSL==22.0.0
+pyparsing==3.0.9
+PySocks==1.7.1
+pytest==7.0.1
+python-dateutil==2.8.2
+python-utils==3.3.3
+pyzmq==23.2.0
+requests==2.27.1
+requests-oauthlib==1.3.1
+rsa==4.9
+ruamel-yaml-conda==0.15.100
+scipy==1.9.0
+setuptools==63.4.0
+six==1.16.0
+tensorboard==2.9.1
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+tensorboardX==2.5.1
+tensorflow==2.9.1
+tensorflow-estimator==2.9.0
+tensorflow-io-gcs-filesystem==0.26.0
+termcolor==1.1.0
+tomli==2.0.1
+torch==1.12.0+cu116
+torchaudio==0.12.0+cu116
+torchvision==0.13.0+cu116
+tqdm==4.63.0
+transforms3d==0.3.1
+typing_extensions==4.3.0
+urllib3==1.26.8
+Werkzeug==2.2.1
+wheel==0.37.1
+wrapt==1.14.1
+zipp==3.8.1
+zmq==0.0.0
