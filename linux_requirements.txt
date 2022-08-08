@@ -1,3 +1,4 @@
+python==3.7.12
 absl-py 
 aiohttp 
 aiosignal 
