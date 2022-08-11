@@ -60,6 +60,8 @@ class train_tools(object):
             ####### Collect n-step training sample #######
             ##############################################
             self.step_counter += 1
+            if self.step_counter >= 100000: # !!!!!!!!!!! Added to stop training at same point
+                break                       # !!!!!!!!!!! Added to stop training at same point
             for step in range(num_steps):
                 with torch.no_grad():
                     selectedlogProb, selectedIdx, dist_entropy, _ = self.PCT_policy(all_nodes, normFactor = factor)
@@ -68,7 +70,7 @@ class train_tools(object):
                 all_nodes, leaf_nodes = tools.get_leaf_nodes(obs, args.internal_node_holder, args.leaf_node_holder)
                 all_nodes, leaf_nodes = all_nodes.to(device), leaf_nodes.to(device)
                 pct_rollout.insert(all_nodes, selectedIdx, selectedlogProb, reward, torch.tensor(1-done).unsqueeze(1))
-
+                #envs.render(mode='human')
             for _ in range(len(infos)):
                 if done[_]:
                     if 'reward' in infos[_].keys():
