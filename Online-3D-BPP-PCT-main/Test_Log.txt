@@ -56,5 +56,234 @@ Notes:
 ****************************************************************************************************
 Next Test:
 Run name:
+DummyPrint
+Run command:
+python main.py
+givenData.py settings: ORIGINAL
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5, now 2-2
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+^ Didn't print line for render
+****************************************************************************************************
+Next Test:
+Run name:
+shmem_vec_env_print
+Run command:
+python main.py --no-cuda
+givenData.py settings: ORIGINAL
+^ Didn't print line for render
+
+****************************************************************************************************
+Next Test:
+Run name:
+Dummy2print
+Run command:
+python main.py --no-cuda
+givenData.py settings: ORIGINAL
+
+****************************************************************************************************
+Next Test:
+Run name:
+Discrete_A2C_2x2x2Box_10x10x10Bin
+Run command:
+python main.py --model-save-interval 10 --model-update-interval 10 --load-dataset --dataset-path ./data_10bin_range_2-2.txt
+python
+data in:
+data_10bin_range_2-2.txt
+
+Errors:
+File "/home/ec2-user/3D-Packing/Online-3D-BPP-PCT-main/wrapper/shmem_vec_env.py", line 132, in _subproc_worker
+    env = env_fn_wrapper.x()
+File "/home/ec2-user/3D-Packing/Online-3D-BPP-PCT-main/envs.py", line 46, in _thunk
+    sample_right_bound = args.sample_right_bound
+File "/home/ec2-user/3D-Packing/Online-3D-BPP-PCT-main/pct_envs/PctDiscrete0/bin3D.py", line 38, in __init__
+    self.box_creator = LoadBoxCreator(data_name)
+File "/home/ec2-user/3D-Packing/Online-3D-BPP-PCT-main/pct_envs/PctDiscrete0/binCreator.py", line 49, in __init__
+    self.traj_nums = len(torch.load(self.data_name))
+File "/home/ec2-user/.conda/envs/packing_env/lib/python3.7/site-packages/torch/serialization.py", line 920, in _legacy_load
+    magic_number = pickle_module.load(f, **pickle_load_args)
+_pickle.UnpicklingError: invalid load key, '#'.
+etc.
+
+
+****************************************************************************************************
+Next Test: Trying default
+Run name:
+Discrete_A2C_1-5Box_10x10x10Bin_nocuda
+Run command:
+python main.py --model-save-interval 10 --model-update-interval 10 --no-cuda
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5, now 2-2
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+
+
+****************************************************************************************************
+Next Test: Trying default
+Run name:
+Discrete_A2C_1-5Box_10x10x10Bin
+Run command:
+python main.py --model-save-interval 100 --model-update-interval 10 
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5, now 2-2
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+****************************************************************************************************
+Next Test: Default specifying dataset
+Run name:
+Discrete_A2C_1-5Box_10x10x10Bin_data_10bin_range_2-2
+Run command:
+python main.py --model-save-interval 100 --model-update-interval 10 --load-dataset --dataset-path 3D-Packing/Online-3D-BPP-PCT-main/data_10bin_range_2-2.txt
+givenData.py settings:
+
+
+
+     EXPERIMENTS FOR CAPSTONE (AFTER 08/11/2022 EDT)
+| | | | | | | | | | | | | | | | | | | | |
+\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+****************************************************************************************************
+Next Test: acktr model
+Model saved every 1000 steps. Set seed = 42
+Run name:
+Discrete_acktr_1-5Box_10x10x10Bin_s42
+Run command:
+python main.py --model-save-interval 1000  --use-acktr USE_ACKTR --seed 42 
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+****************************************************************************************************
+Next Test: A2C model
+Model saved every 1000 steps. Set seed = 42
+Run name:
+Discrete_A2C_1-5Box_10x10x10Bin_s42
+Run command:
+python main.py --model-save-interval 1000  --seed 42 
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+****************************************************************************************************
+Next Test: A2C model w/hidden = 32
+Model saved every 1000 steps. Set seed = 42
+Run name:
+Discrete_A2C_1-5Box_10x10x10Bin_s42_h32
+Run command:
+python main.py --model-save-interval 1000 --seed 42 --hidden-size 32 
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+****************************************************************************************************
+Next Test: A2C model w/hidden = 64
+Model saved every 1000 steps. Set seed = 42
+Run name:
+Discrete_A2C_1-5Box_10x10x10Bin_s42_h64
+Run command:
+python main.py --model-save-interval 1000  --seed 42 --hidden-size 64 
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+
+
+****************************************************************************************************
+Next Test: acktr model w/hidden = 32
+Model saved every 1000 steps. Set seed = 42
+Run name:
+Discrete_acktr_1-5Box_10x10x10Bin_s42_h32
+Run command:
+python main.py --model-save-interval 1000  --seed 42 --hidden-size 32 --use-acktr USE_ACKTR 
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+
+****************************************************************************************************
+Next Test: acktr model w/hidden = 64
+Model saved every 1000 steps. Set seed = 42
+Run name:
+Discrete_acktr_1-5Box_10x10x10Bin_s42_h64
+Run command:
+python main.py --model-save-interval 1000 --seed 42 --hidden-size 64 --use-acktr USE_ACKTR 
+givenData.py settings:
+container_size = [10,10,10]
+lower = 1
+higher = 5 ## Change to have uniform boxes was 1-5
+resolution = 1
+item_size_set = []
+for i in range(lower, higher + 1):
+    for j in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+        for k in range(lower, higher + 1): ## Changing from + 1 to + 4 for large flat boxes.
+                item_size_set.append((i * resolution, j * resolution , k *  resolution))
+
+
+
+
+****************************************************************************************************
+Next Test: 
+Run name:
 Run command:
 givenData.py settings:
