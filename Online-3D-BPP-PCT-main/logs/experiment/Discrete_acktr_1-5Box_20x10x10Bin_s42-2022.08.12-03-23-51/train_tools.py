@@ -60,8 +60,8 @@ class train_tools(object):
             ####### Collect n-step training sample #######
             ##############################################
             self.step_counter += 1
-            if self.step_counter >= 100000: # !!!!!!!!!!! Added to stop training at same point
-                break                       # !!!!!!!!!!! Added to stop training at same point
+            # if self.step_counter >= 100000: # !!!!!!!!!!! Added to stop training at same point
+            #     break                       # !!!!!!!!!!! Added to stop training at same point
             for step in range(num_steps):
                 with torch.no_grad():
                     selectedlogProb, selectedIdx, dist_entropy, _ = self.PCT_policy(all_nodes, normFactor = factor)
